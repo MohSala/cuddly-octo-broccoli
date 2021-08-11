@@ -39,7 +39,8 @@ function OurVacancy() {
                 notify()
             })
             .catch((e) => {
-                console.log("ERROR", e.message)
+                alert(JSON.parse(e.request.response).message);
+                console.log("ERROR",e)
             })
     }
 
