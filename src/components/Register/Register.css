@@ -1,0 +1,66 @@
+.Register {
+    display: grid;
+    place-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.Register > h4 {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Register > img {
+    object-fit: contain;
+    height: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.Register > form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.Register > form > input {
+    width: 360px;
+    height:50px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.Register > form > select {
+    width: 360px;
+    height:50px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    align-items: center;
+    align-self: center;
+}
+
+.Register > form > button {
+    width: 360px;
+    height:50px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: darkblue;
+    color: honeydew;
+    border-radius: 10px;
+    align-self: center;
+}
+
+.Register__login {
+    color:  #0074b1;
+    cursor: pointer;
+}
+
+.Register > p {
+    margin-top: 20px;
+}
