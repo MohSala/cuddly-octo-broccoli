@@ -10,7 +10,7 @@ function HeaderOption({ avatar, title, Icon, onClick }) {
         <div onClick={onClick} className="headerOption">
             {Icon && <Icon className="headerOption__icon" />}
             {avatar && (
-                <Avatar className="headerOption__avatar">H</Avatar>
+                <Avatar className="headerOption__avatar"></Avatar>
 
             )}
             <h3 className="headerOption__title">{title}</h3>

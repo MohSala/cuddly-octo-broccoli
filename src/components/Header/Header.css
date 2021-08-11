@@ -22,7 +22,7 @@
 }
 
 
-.header__search {
+.header__search  {
     padding: 10px;
     display: flex;
     align-items: center;
@@ -33,7 +33,7 @@
 }
 
 
-.header__search > input {
+.header__search > form >input {
     outline: none;
     border:none;
     background: none;

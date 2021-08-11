@@ -2,9 +2,14 @@ import React, { useEffect, useContext } from 'react'
 import ClockIcon from "@material-ui/icons/Timer";
 import ThumbsUp from "@material-ui/icons/ThumbUpSharp"
 import LikeIcon from "@material-ui/icons/ThumbUpTwoTone"
+import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './Dashboard.css';
-
+import { BASE_URL } from '../../app/config';
 import { LikedPosts } from "../../app/context";
+import { logout, selectUser } from '../../features/userSlice';
+import axios from "axios";
 
 function JobDetail({
     id, title, company,
@@ -12,7 +17,7 @@ function JobDetail({
     postFromDate, postToDate, salaryRangFrom,
     salaryRangTo
 }) {
-
+    const user = useSelector(selectUser);
     const { likedPosts, setLikedPosts } = useContext(LikedPosts);
 
     useEffect(() => {
@@ -27,7 +32,11 @@ function JobDetail({
             <p>Location: {location}</p>
 
             <div className="jobDetail__actionbuttons">
-                <button className="applyButton" onClick={onClick}>Apply Now</button>
+                {
+                    user && user.role !== "ROLE_COMPANY" &&
+                    <button className="applyButton" onClick={onClick}>Apply Now</button>
+
+                }
 
                 {
                     likedPosts.includes(id) ?
