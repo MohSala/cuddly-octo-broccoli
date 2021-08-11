@@ -148,7 +148,7 @@ function Dashboard(props) {
                             salaryRangFrom={detailProps.salaryRangFrom}
                             salaryRangTo={detailProps.salaryRangTo}
 
-                            onClick={e => applyToJob(e, user.id)}
+                            onClick={e => applyToJob(e, detailProps.id)}
                         />
                         <ToastContainer />
                     </>
