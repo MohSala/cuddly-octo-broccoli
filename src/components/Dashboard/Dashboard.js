@@ -31,7 +31,7 @@ function Dashboard(props) {
     }
 
 
-    useEffect(() => {
+    const loadInitialJobs =()=>{
         setLoading(true);
         axios.get(`${BASE_URL}api/vacancy/approved`, { headers })
             .then((response) => {
@@ -43,6 +43,10 @@ function Dashboard(props) {
                 console.log("ERROR", e.message)
                 setLoading(false);
             })
+    }
+
+    useEffect(() => {
+        loadInitialJobs();
     }, [])
 
     const applyToJob = (_, id) => {
@@ -54,9 +58,10 @@ function Dashboard(props) {
             })
             .catch((e) => {
                 console.log("ERROR", e.response.data.message)
-                setError(true);
-                setErrorMsg(e.response.data.message);
+                //setError(true);
+                //setErrorMsg(e.response.data.message);
                 setLoading(false);
+                toast.error(e.response.data.message);
             })
     }
 
@@ -70,6 +75,7 @@ function Dashboard(props) {
                 setLoading(false);
             })
             .catch((e) => {
+                loadInitialJobs();
                 console.log("ERROR", e.message)
                 setLoading(false);
             })
@@ -78,24 +84,23 @@ function Dashboard(props) {
     return (
         <>
             <Header />
-            <div className="header__search">
-                <SearchIcon />
-                <form onSubmit={searchPostings}>
-                    <input type="text" onChange={e => setSearchText(e.target.value)} />
-                </form>
-            </div>
 
-            {
-                error &&
-                <p className="errorText">{errorMsg}</p>
-            }
             <div className="Dashboard">
 
                 {/* SIDELIST */}
-
-
                 {showDetails && <div className="content">
+                    <h1>Dashboard</h1>
+                    <div className="header__search">
+                        <SearchIcon />
+                        <form onSubmit={searchPostings}>
+                            <input type="text" onChange={e => setSearchText(e.target.value)} placeholder={"Search For Job Vacancies"} />
+                        </form>
+                    </div>
 
+                    {
+                        errorMsg &&
+                        <p className="errorText">{errorMsg}</p>
+                    }
                     {
                         isLoading ?
                             <p>Loading...</p> :

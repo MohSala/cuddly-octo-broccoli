@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 
 function Header(props) {
     const user = useSelector(selectUser);
+    console.log(localStorage.getItem("user"))
     const dispatch = useDispatch();
 
     const token = localStorage.getItem("token")
@@ -32,6 +33,9 @@ function Header(props) {
             .then((response) => {
                 console.log("RESP>> ", response.data);
                 let u = localStorage.getItem("user");
+                if(u){
+                    u = JSON.parse(u);
+                }
                 // dispatch(login(u))
             })
             .catch((e) => {

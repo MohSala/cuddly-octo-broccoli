@@ -30,7 +30,7 @@ function Login(props) {
                 .then((response) => {
                     console.log("RESP>> ", response.data)
                     localStorage.setItem("token", response.data.accessToken);
-                    localStorage.setItem("user", response.data.user);
+                    localStorage.setItem("user", JSON.stringify(response.data.user));
                     setLoading(false);
                     setError(false);
                     dispatch(login(response.data.user))
