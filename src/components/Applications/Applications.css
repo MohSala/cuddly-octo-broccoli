@@ -1,0 +1,59 @@
+.sidebar {
+    border: 2px solid black;
+    border-radius: 0px;
+}
+
+.detail {
+    display: grid;
+    place-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.jobVacancyTitle {
+    border: 5px solid darkcyan;
+    padding: 15px;
+    border-radius: 1px;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.goBack {
+    padding: 10px;
+    border: 1px solid white;
+}
+
+.jobVacancyTitle > h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: 29px;
+}
+
+.jobVacancyTitle > h6 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: darkgreen;
+    font-size: large;
+}
+
+.applicants {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.applicantCards {
+    border:3px solid darkblue;
+    background-color: whitesmoke;
+    padding: 10px;
+    margin: 10px;
+    width: fit-content;
+    height: fit-content;
+}

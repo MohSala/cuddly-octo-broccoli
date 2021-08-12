@@ -10,6 +10,8 @@ import AddVacancy from './components/Vacancy/AddVacancy';
 import JobDetail from './components/Dashboard/JobDetail';
 import { LikedPosts } from './app/context'
 import OurVacancy from './components/OurVacancy/OurVacancy';
+import Applications from './components/Applications/Applications';
+import ApplicationDetail from './components/Applications/ApplicationDetail';
 import PendingVacancies from './components/PendingVacancies/PendingVacancies';
 
 
@@ -43,6 +45,8 @@ function App(props) {
             <Route path='/dashboard' component={Dashboard} />
             <Route path='/add-vacancy' component={AddVacancy} />
             <Route path='/our-vacancy' component={OurVacancy} />
+            <Route path='/applications' component={Applications} />
+            <Route exact path='/application/:id' component={ApplicationDetail} />
             <Route path='/pending-vacancy' component={PendingVacancies} />
           </Switch>
         </Router>
