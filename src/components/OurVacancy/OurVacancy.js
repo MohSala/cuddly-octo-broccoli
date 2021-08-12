@@ -39,7 +39,7 @@ function OurVacancy() {
                 notify()
             })
             .catch((e) => {
-                alert(JSON.parse(e.request.response).message);
+                toast.error(JSON.parse(e.request.response).message);
                 console.log("ERROR",e)
             })
     }
