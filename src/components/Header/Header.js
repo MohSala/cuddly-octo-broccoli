@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import './Header.css';
-import SearchIcon from '@material-ui/icons/Search';
+
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import HomeIcon from '@material-ui/icons/Home';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
@@ -61,7 +61,9 @@ function Header(props) {
                 {
                     user && user.role == "ROLE_COMPANY" &&
                     <>
-                        <HeaderOption title="Applications" Icon={SupervisorAccountIcon} />
+                        <Link to='/applications' style={{ textDecoration: "none" }}>
+                            <HeaderOption title="Applications" Icon={SupervisorAccountIcon} />
+                        </Link>
                         <Link to='/our-vacancy' style={{ textDecoration: "none" }}>
                             <HeaderOption title="Our Vacancies" Icon={BusinessCenterIcon} />
                         </Link>
