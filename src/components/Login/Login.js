@@ -47,6 +47,7 @@ function Login(props) {
 
     return (
         <div className="Login">
+            <h1>MIU Job Portal</h1>
             <h4>Login</h4>
             {
                 error &&
