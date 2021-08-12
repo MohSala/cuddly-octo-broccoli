@@ -70,6 +70,16 @@ function Header(props) {
                     </>
                 }
 
+                {
+                    user && user.role == "ROLE_ADMIN" &&
+                    <>
+                        <Link to='/pending-vacancy' style={{ textDecoration: "none" }}>
+                            <HeaderOption title="Pending Vacancies" Icon={BusinessCenterIcon} />
+                        </Link>
+                    </>
+                }
+
+
                 {/* <HeaderOption title="Message" Icon={MessageIcon} /> */}
                 {/* <HeaderOption title="Notifications" Icon={NotificationsIcon} /> */}
                 <HeaderOption avatar={true} title={user.name} onClick={() => { }} />
