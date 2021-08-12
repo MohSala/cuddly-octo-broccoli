@@ -50,10 +50,12 @@ function OurVacancy() {
             <Header />
             <ToastContainer />
             <div className="content">
-                <Link to='/add-vacancy' style={{ textDecoration: "none", alignSelf: "flex-end" }}>
+                <h1>Our Vacancies</h1>
+                <Link to='/add-vacancy' style={{ textDecoration: "none" }}>
                     <button className="addVacancy">Add New Vacancy</button>
 
                 </Link>
+                <hr/>
                 {data.length > 0 &&
                     data.map((item, index) => {
                         return (
