@@ -22,7 +22,6 @@ import AddCertificate from './components/JobSeekerProfile/AddCertificate';
 function App(props) {
   const [likedPosts, setLikedPosts] = useState([]);
   const user = useSelector(selectUser);
-  console.log("uuu", user);
   return (
     <div className="app">
 

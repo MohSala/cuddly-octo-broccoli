@@ -18,9 +18,9 @@ function JobDetail({
     salaryRangTo
 }) {
     let user = useSelector(selectUser);
-    user = JSON.parse(JSON.parse(user));
+    user = JSON.parse(JSON.parse(user))
     const { likedPosts, setLikedPosts } = useContext(LikedPosts);
-
+    console.log("oooooooo", user);
     useEffect(() => {
         console.log("Liked Psot ", likedPosts);
         console.log("USER ", user);
