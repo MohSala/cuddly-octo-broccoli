@@ -11,7 +11,7 @@ export const userSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     register: (state, action) => {
-      console.log("oooo",state)
+      console.log("oooo", state)
       state.user = action.payload;
     },
     login: (state, action) => {
@@ -30,8 +30,8 @@ export const { register, login, logout } = userSlice.actions;
 
 export const selectUser = (state) => {
   let u = localStorage.getItem("user");
-  if(u){
-    u = JSON.parse(u);
+  if (u) {
+    u = JSON.stringify(u);
   }
 
   return u;

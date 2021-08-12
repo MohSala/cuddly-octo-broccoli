@@ -33,7 +33,7 @@ function JobDetail({
 
             <div className="jobDetail__actionbuttons">
                 {
-                    user && user.role   == "ROLE_JOBSEEKER" &&
+                    user && user.role == "ROLE_JOBSEEKER" &&
                     <button className="applyButton" onClick={onClick}>Apply Now</button>
 
                 }
@@ -51,7 +51,7 @@ function JobDetail({
                 <h4>Salary range: ${salaryRangFrom} - ${salaryRangTo}</h4>
                 <h6>Urgently hiring <span><ClockIcon /></span></h6>
                 <div className="jobDetail__type">
-                    <p className="detail">Job-Type</p>
+                    <h3>Job-Type</h3>
                     <p>Full-Time</p>
                 </div>
                 <p>Description:</p>

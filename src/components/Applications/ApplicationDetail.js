@@ -9,20 +9,23 @@ import './Applications.css'
 function ApplicationDetail(props) {
     const { id } = useParams();
     const [data, setData] = useState([]);
-
+    const [isLoading, setLoading] = useState(false);
     const token = localStorage.getItem("token")
     const headers = {
         'Authorization': `Bearer ${token}`
     }
 
     useEffect(() => {
+        setLoading(true)
         axios.get(`${BASE_URL}api/vacancy/applications/${id}`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(response.data)
+                setLoading(false)
             })
             .catch((e) => {
                 console.log("ERROR", e.message)
+                setLoading(false)
             })
     }, [])
 
@@ -36,12 +39,14 @@ function ApplicationDetail(props) {
             <button className="goBack" onClick={goBackHome}>Go Back</button>
             <div className="detail">
                 {
-                    data.length > 0 ?
-                        <div className="jobVacancyTitle">
-                            <h2>{data && data[0].vacancy.title}</h2>
-                            <h2>{data && data[0].vacancy.location}</h2>
-                            <h6>${data && data[0].vacancy.salaryRangFrom} - ${data[0].vacancy.salaryRangTo}</h6>
-                        </div> : <p>No applications for this posting</p>}
+                    isLoading ?
+                        <p>loading....</p> :
+                        data.length > 0 ?
+                            <div className="jobVacancyTitle">
+                                <h2>{data && data[0].vacancy.title}</h2>
+                                <h2>{data && data[0].vacancy.location}</h2>
+                                <h6>${data && data[0].vacancy.salaryRangFrom} - ${data[0].vacancy.salaryRangTo}</h6>
+                            </div> : <p>No applications for this posting</p>}
 
                 <div className="applicants">
                     {

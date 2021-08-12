@@ -8,6 +8,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import MessageIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
+import EditIcon from "@material-ui/icons/Edit"
 import axios from 'axios';
 import HeaderOption from './HeaderOption';
 import { BASE_URL } from '../../app/config'
@@ -16,8 +17,8 @@ import { logout, selectUser } from '../../features/userSlice';
 import { Link } from "react-router-dom";
 
 function Header(props) {
-    const user = useSelector(selectUser);
-    console.log(localStorage.getItem("user"))
+    let user = useSelector(selectUser);
+    user = JSON.parse(JSON.parse(user))
     const dispatch = useDispatch();
 
     const token = localStorage.getItem("token")
@@ -27,12 +28,12 @@ function Header(props) {
 
 
     useEffect(() => {
-        console.log("USERR ", user.role)
+
         axios.get(`${BASE_URL}user/me`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data);
                 let u = localStorage.getItem("user");
-                if(u){
+                if (u) {
                     u = JSON.parse(u);
                 }
                 // dispatch(login(u))
@@ -83,9 +84,14 @@ function Header(props) {
                     </>
                 }
 
+                {
+                    user && user.role == "ROLE_JOBSEEKER" &&
+                    <Link to='/experience' style={{ textDecoration: "none" }}>
 
-                {/* <HeaderOption title="Message" Icon={MessageIcon} /> */}
-                {/* <HeaderOption title="Notifications" Icon={NotificationsIcon} /> */}
+                        <HeaderOption title="Experience & Education" Icon={EditIcon} />
+                    </Link>
+                }
+
                 <HeaderOption avatar={true} title={user.name} onClick={() => { }} />
                 <HeaderOption title="Logout" Icon={LogoutIcon} onClick={logout} />
             </div>
