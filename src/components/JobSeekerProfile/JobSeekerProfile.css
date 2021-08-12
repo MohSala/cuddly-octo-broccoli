@@ -19,3 +19,27 @@
     border: 2px solid white;
     border-radius: 10px;
 }
+
+.profileCard {
+    place-items: center;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 2px solid black;
+    justify-content: space-evenly;
+}
+
+.profileCard > h3 {
+    text-align: center;
+    margin-top: -10px;
+}
+
+.profileItems {
+    place-items: center;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}

@@ -40,6 +40,9 @@ function AddCertificate(props) {
                 setLoading(false);
                 setError(false);
                 notify();
+                setTimeout(() => {
+                    props.history.push('/experience');
+                }, 2000);
             })
             .catch((e) => {
                 setError(true);
