@@ -17,11 +17,13 @@ function JobDetail({
     postFromDate, postToDate, salaryRangFrom,
     salaryRangTo
 }) {
-    const user = useSelector(selectUser);
+    let user = useSelector(selectUser);
+    user = JSON.parse(JSON.parse(user));
     const { likedPosts, setLikedPosts } = useContext(LikedPosts);
 
     useEffect(() => {
         console.log("Liked Psot ", likedPosts);
+        console.log("USER ", user);
     }, []);
 
     return (
