@@ -1,0 +1,17 @@
+.addVacancy {
+    background-color: tomato;
+    color: white;
+    padding: 10px;
+    font-weight: bolder;
+    border: 1px solid paleturquoise;
+    border-radius: 7px;
+    align-self: flex-end;
+    margin: 5px;
+}
+
+.sidebar > form > button {
+    background-color: tomato;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
