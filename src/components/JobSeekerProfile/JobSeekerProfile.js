@@ -84,6 +84,14 @@ function JobSeekerProfile() {
                                 </ul>
                             )) : <p>None listed</p>
                         }
+                        <h4>Skills:</h4>
+                        {data.jobSeeker.jobSeekerSkills.length > 0 ?
+                            data.jobSeeker.jobSeekerSkills.map((iE, ind) => (
+                                <ul key={ind}>
+                                    <li>Name:{iE.name}</li>
+                                </ul>
+                            )) : <p>None listed</p>
+                        }
                     </div>
 
                 }
