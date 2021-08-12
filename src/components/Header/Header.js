@@ -8,6 +8,7 @@ import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import MessageIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import LogoutIcon from '@material-ui/icons/ExitToApp';
+import EditIcon from "@material-ui/icons/Edit"
 import axios from 'axios';
 import HeaderOption from './HeaderOption';
 import { BASE_URL } from '../../app/config'
@@ -79,9 +80,14 @@ function Header(props) {
                     </>
                 }
 
+                {
+                    user && user.role == "ROLE_JOBSEEKER" &&
+                    <Link to='/experience' style={{ textDecoration: "none" }}>
 
-                {/* <HeaderOption title="Message" Icon={MessageIcon} /> */}
-                {/* <HeaderOption title="Notifications" Icon={NotificationsIcon} /> */}
+                        <HeaderOption title="Experience & Education" Icon={EditIcon} />
+                    </Link>
+                }
+
                 <HeaderOption avatar={true} title={user.name} onClick={() => { }} />
                 <HeaderOption title="Logout" Icon={LogoutIcon} onClick={logout} />
             </div>

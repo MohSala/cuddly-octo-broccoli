@@ -13,6 +13,8 @@ import OurVacancy from './components/OurVacancy/OurVacancy';
 import Applications from './components/Applications/Applications';
 import ApplicationDetail from './components/Applications/ApplicationDetail';
 import PendingVacancies from './components/PendingVacancies/PendingVacancies';
+import AddSkill from './components/JobSeekerProfile/AddSkill';
+import JobSeekerProfile from './components/JobSeekerProfile/JobSeekerProfile';
 
 
 function App(props) {
@@ -45,6 +47,8 @@ function App(props) {
             <Route path='/applications' component={Applications} />
             <Route exact path='/application/:id' component={ApplicationDetail} />
             <Route path='/pending-vacancy' component={PendingVacancies} />
+            <Route path='/add-skill' component={AddSkill} />
+            <Route path='/experience' component={JobSeekerProfile} />
           </Switch>
         </Router>
       </LikedPosts.Provider>
