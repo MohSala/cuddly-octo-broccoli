@@ -16,6 +16,7 @@ import PendingVacancies from './components/PendingVacancies/PendingVacancies';
 function App(props) {
   const [likedPosts, setLikedPosts] = useState([]);
   const user = useSelector(selectUser);
+  console.log("uuu",user);
   return (
     <div className="app">
 
@@ -27,14 +28,16 @@ function App(props) {
             <Redirect to="/dashboard" />
           )} /> */}
             {
-              !user &&
-              <Route exact path="/" component={Login} render={() => (
-                <Redirect to="/login" />
-              )} />
+              !user ?
+                  <Route exact path="/" component={Login} render={() => (
+                      <Redirect to="/login" />
+                  )} />
+
+              :<Route exact path="/"  render={() => (
+                      <Redirect to="/dashboard" />
+                  )} />
+
             }
-            <Route exact path="/" component={Login} render={() => (
-              <Redirect to="/login" />
-            )} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/dashboard' component={Dashboard} />

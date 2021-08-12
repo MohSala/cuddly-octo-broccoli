@@ -95,7 +95,7 @@ function Dashboard(props) {
 
 
                 {showDetails && <div className="content">
-
+                    <h1>Dashboard</h1>
                     {
                         isLoading ?
                             <p>Loading...</p> :
