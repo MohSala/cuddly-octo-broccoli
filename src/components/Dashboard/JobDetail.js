@@ -33,11 +33,10 @@ function JobDetail({
 
             <div className="jobDetail__actionbuttons">
                 {
-                    user && user.role !== "ROLE_COMPANY" &&
+                    user && user.role   == "ROLE_JOBSEEKER" &&
                     <button className="applyButton" onClick={onClick}>Apply Now</button>
 
                 }
-
                 {
                     likedPosts.includes(id) ?
                         <p> You liked this! </p> :
