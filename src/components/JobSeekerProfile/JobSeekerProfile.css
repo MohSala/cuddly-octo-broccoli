@@ -1,0 +1,21 @@
+.buttonsForEdit {
+    display: flex;
+    place-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 2px solid black;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.skillButton {
+    background-color: tomato;
+    color: whitesmoke;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bolder;
+    border: 2px solid white;
+    border-radius: 10px;
+}

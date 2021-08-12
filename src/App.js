@@ -15,12 +15,14 @@ import ApplicationDetail from './components/Applications/ApplicationDetail';
 import PendingVacancies from './components/PendingVacancies/PendingVacancies';
 import AddSkill from './components/JobSeekerProfile/AddSkill';
 import JobSeekerProfile from './components/JobSeekerProfile/JobSeekerProfile';
+import AddExperience from './components/JobSeekerProfile/AddExperience';
+import AddCertificate from './components/JobSeekerProfile/AddCertificate';
 
 
 function App(props) {
   const [likedPosts, setLikedPosts] = useState([]);
   const user = useSelector(selectUser);
-  console.log("uuu",user);
+  console.log("uuu", user);
   return (
     <div className="app">
 
@@ -33,13 +35,13 @@ function App(props) {
           )} /> */}
             {
               !user ?
-                  <Route exact path="/" component={Login} render={() => (
-                      <Redirect to="/login" />
-                  )} />
+                <Route exact path="/" component={Login} render={() => (
+                  <Redirect to="/login" />
+                )} />
 
-              :<Route exact path="/"  render={() => (
-                      <Redirect to="/dashboard" />
-                  )} />
+                : <Route exact path="/" render={() => (
+                  <Redirect to="/dashboard" />
+                )} />
 
             }
             <Route path='/login' component={Login} />
@@ -52,6 +54,8 @@ function App(props) {
             <Route path='/pending-vacancy' component={PendingVacancies} />
             <Route path='/add-skill' component={AddSkill} />
             <Route path='/experience' component={JobSeekerProfile} />
+            <Route path='/add-experience' component={AddExperience} />
+            <Route path='/add-certificate' component={AddCertificate} />
           </Switch>
         </Router>
       </LikedPosts.Provider>

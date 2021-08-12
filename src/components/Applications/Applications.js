@@ -12,21 +12,23 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Applications(props) {
     const [data, setData] = useState([]);
-    const notify = () => toast("Posting Deleted Successfully");
-
+    const [isLoading, setLoading] = useState(false);
     const token = localStorage.getItem("token")
     const headers = {
         'Authorization': `Bearer ${token}`
     }
 
     useEffect(() => {
+        setLoading(true)
         axios.get(`${BASE_URL}api/vacancy/`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(response.data)
+                setLoading(false)
             })
             .catch((e) => {
                 console.log("ERROR", e.message)
+                setLoading(false)
             })
     }, [])
 
@@ -40,21 +42,23 @@ function Applications(props) {
 
             <div className="content">
 
-                {data.length > 0 &&
-                    data.map((item, index) => {
-                        return (
-                            <Link to={`/application/${item.id}`} className="sidebar" style={{ textDecoration: "none", color: "#000" }}>
-                                <div key={index} onClick={() => {
+                {isLoading ?
+                    <p>loading....</p> :
+                    data.length > 0 ?
+                        data.map((item, index) => {
+                            return (
+                                <Link key={index} to={`/application/${item.id}`} className="sidebar" style={{ textDecoration: "none", color: "#000" }}>
+                                    <div onClick={() => {
 
 
-                                }}>
-                                    <h2>{item.title}</h2>
-                                    <p>Location: {item.location}</p>
+                                    }}>
+                                        <h2>{item.title}</h2>
+                                        <p>Location: {item.location}</p>
 
-                                </div>
-                            </Link>
-                        )
-                    })
+                                    </div>
+                                </Link>
+                            )
+                        }) : <p>No vacancies listed</p>
                 }
             </div>
         </>
