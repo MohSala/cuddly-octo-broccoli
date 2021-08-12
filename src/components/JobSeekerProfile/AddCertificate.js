@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function AddCertificate(props) {
     const [name, setname] = useState("");
-    const [serialNumber, setserialNumber] = useState("");
     const [issuedBy, setissuedBy] = useState("");
     const [issueDate, setissueDate] = useState("");
     const [expirationDate, setexpirationDate] = useState("");
@@ -30,7 +29,6 @@ function AddCertificate(props) {
         setLoading(true);
         axios.post(`${BASE_URL}api/certificates/`, {
             name,
-            serialNumber,
             issuedBy,
             issueDate,
             expirationDate
@@ -68,7 +66,6 @@ function AddCertificate(props) {
                 <ToastContainer />
                 <form>
                     <input type="text" placeholder="Name" required onChange={(t) => setname(t.target.value)} />
-                    <input type="text" placeholder="Serial Number" required onChange={(t) => setserialNumber(t.target.value)} />
                     <input type="text" placeholder="Issue Date e.g 2020-09-09" required onChange={(t) => setissueDate(t.target.value)} />
                     <input type="text" placeholder="Issued by" required onChange={(t) => setissuedBy(t.target.value)} />
                     <input type="text" placeholder="Expiration Date e.g 2020-09-09" required onChange={(t) => setexpirationDate(t.target.value)} />
