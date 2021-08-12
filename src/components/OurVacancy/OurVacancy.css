@@ -7,6 +7,7 @@
     border-radius: 7px;
     align-self: flex-end;
     margin: 5px;
+    cursor: pointer;
 }
 
 .sidebar > form > button {
@@ -14,8 +15,33 @@
     padding: 10px;
     margin-bottom: 10px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 hr{
     width: 100%;
+}
+
+.Published{
+    color: green;
+}
+
+.Draft{
+    color: orange;
+}
+
+.Canceled{
+    color: red;
+}
+
+a button{
+    background-color: #278844;
+    color: white;
+    padding: 10px;
+    font-weight: bolder;
+    border: 1px solid paleturquoise;
+    border-radius: 7px;
+    align-self: flex-end;
+    margin: 5px;
+    cursor: pointer;
 }

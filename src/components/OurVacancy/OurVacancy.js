@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function OurVacancy() {
+function OurVacancy(props) {
     const [data, setData] = useState([]);
     const notify = () => toast("Posting Deleted Successfully");
 
@@ -44,6 +44,12 @@ function OurVacancy() {
             })
     }
 
+    const StatusMap = {
+        "Published":"Approved",
+        "Draft":"Pending Approval",
+        "Canceled":"Rejected",
+    }
+
     return (
         <>
 
@@ -64,7 +70,8 @@ function OurVacancy() {
 
                             }}>
                                 <h2>{item.title}</h2>
-                                <p>Location: {item.location}</p>
+                                <p><b>Location</b>: {item.location}</p>
+                                <p className={item.vacancyStatus}><b>Status</b>: { StatusMap[item.vacancyStatus]}</p>
 
                                 <div className="sidebar__description">
                                     <p>Description:</p>
@@ -73,6 +80,9 @@ function OurVacancy() {
 
                                 <form>
                                     <button onClick={(e) => deletePosting(e, item.id)}>Delete Vacancy</button>
+                                    <Link to={"/application/"+item.id}>
+                                        <button>View Applications</button>
+                                    </Link>
                                 </form>
 
                             </div>
