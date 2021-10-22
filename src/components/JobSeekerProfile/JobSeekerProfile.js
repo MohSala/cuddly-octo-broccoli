@@ -11,16 +11,17 @@ function JobSeekerProfile() {
     const [data, setData] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const token = localStorage.getItem("token");
+    const jobseeker = JSON.parse(localStorage.getItem("jobseeker"));
     const headers = {
         'Authorization': `Bearer ${token}`
     }
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`${BASE_URL}user/me`, { headers })
+        axios.get(`${BASE_URL}api/ca/job-seeker/${jobseeker.id}`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
-                setData(response.data)
+                setData({jobSeeker:response.data});
                 setLoading(false)
             })
             .catch((e) => {

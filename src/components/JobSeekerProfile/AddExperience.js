@@ -28,7 +28,7 @@ function AddExperience(props) {
     const submitAction = (e) => {
         e.preventDefault();
         setLoading(true);
-        axios.post(`${BASE_URL}api/work-experince/`, {
+        axios.post(`${BASE_URL}api/ca/work-experince/`, {
             companyName,
             fromDate,
             toDate,

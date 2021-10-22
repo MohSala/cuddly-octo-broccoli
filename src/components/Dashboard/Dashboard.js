@@ -27,13 +27,14 @@ function Dashboard(props) {
 
     const token = localStorage.getItem("token")
     const headers = {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        'Access-Control-Allow-Origin': '*',
     }
 
 
     const loadInitialJobs =()=>{
         setLoading(true);
-        axios.get(`${BASE_URL}api/vacancy/approved`, { headers })
+        axios.get(`${BASE_URL}api/job/search`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(response.data)
@@ -50,7 +51,7 @@ function Dashboard(props) {
     }, [])
 
     const applyToJob = (_, id) => {
-        axios.post(`${BASE_URL}api/vacancy/apply/${id}`, {}, { headers })
+        axios.post(`${BASE_URL}api/js/vacancy/apply/${id}`, {}, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setLoading(false);
@@ -62,16 +63,16 @@ function Dashboard(props) {
                 //setErrorMsg(e.response.data.message);
                 setLoading(false);
                 toast.error(e.response.data.message);
-            })
+            });
     }
 
     const searchPostings = (e) => {
         e.preventDefault();
         setLoading(true);
-        axios.get(`${BASE_URL}api/search/vacancy/${searchText}`, { headers })
+        axios.get(`${BASE_URL}api/job/search?job=${searchText}`, { headers })
             .then((response) => {
-                console.log("RESP>> ", response.data.result)
-                setData(response.data.result)
+                console.log("RESP>> ", response.data.jobs)
+                setData(response.data.jobs)
                 setLoading(false);
             })
             .catch((e) => {
@@ -110,11 +111,11 @@ function Dashboard(props) {
                                         <div key={index} className="sidebar" onClick={() => {
                                             setShowDetails(false);
                                             window.scrollTo(0, 0);
-                                            setDetailProps(item);
+                                            setDetailProps(item._source);
 
                                         }}>
-                                            <h2>{item.title}</h2>
-                                            <p>Location: {item.location}</p>
+                                            <h2>{item._source.title}</h2>
+                                            <p>Location: {item._source.location}</p>
 
                                             <div className="sidebar__tags">
                                                 <h6>Urgently hiring <span><ClockIcon /></span></h6>
@@ -123,7 +124,7 @@ function Dashboard(props) {
 
                                             <div className="sidebar__description">
                                                 <p>Description:</p>
-                                                <p>{item.jobDescription}</p>
+                                                <p>{item._source.jobDescription}</p>
                                             </div>
 
                                         </div>

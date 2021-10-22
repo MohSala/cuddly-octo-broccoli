@@ -24,7 +24,7 @@ function AddSkill(props) {
     const submitAction = (e) => {
         e.preventDefault();
         setLoading(true);
-        axios.post(`${BASE_URL}api/skills/`, {
+        axios.post(`${BASE_URL}api/ca/skills/`, {
             name: skill
         }, { headers })
             .then((response) => {

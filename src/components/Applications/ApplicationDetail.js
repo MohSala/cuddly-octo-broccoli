@@ -17,7 +17,7 @@ function ApplicationDetail(props) {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`${BASE_URL}api/vacancy/applications/${id}`, { headers })
+        axios.get(`${BASE_URL}api/js/vacancy/applications/${id}`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(response.data)
@@ -53,39 +53,8 @@ function ApplicationDetail(props) {
                         data.length > 0 &&
                         data.map((item, index) => (
                             <div key={index} className="applicantCards">
-                                <h3>Name: {item.jobSeeker.user.name}</h3>
-                                <h3>Country: {item.jobSeeker.country}</h3>
-                                <h3>Applied On: {item.applyDate}</h3>
-                                <h3>Current Position: {item.jobSeeker.currentPosition}</h3>
-                                <h4>Education:</h4>
-                                {item.jobSeeker.educations.length > 0 ?
-                                    item.jobSeeker.educations.map((iE, ind) => (
-                                        <ul key={ind}>
-                                            <li>Degree:{iE.degree}</li>
-                                            <li>From:{iE.fromDate} - To: {iE.toDate}</li>
-                                        </ul>
-                                    )) : <p>None listed</p>
-                                }
-                                <h4>Experience:</h4>
-                                {item.jobSeeker.workExperiences.length > 0 ?
-                                    item.jobSeeker.workExperiences.map((iE, ind) => (
-                                        <ul key={ind}>
-                                            <li>Company:{iE.companyName}</li>
-                                            <li>Position: {iE.position}</li>
-                                            <li>Last Salary: {iE.lastSalary}</li>
-                                        </ul>
-                                    )) : <p>None listed</p>
-                                }
-                                <h4>Certificate:</h4>
-                                {item.jobSeeker.certificates.length > 0 ?
-                                    item.jobSeeker.certificates.map((iE, ind) => (
-                                        <ul key={ind}>
-                                            <li>Name:{iE.name}</li>
-                                            <li>Serial Number: {iE.serialNumber}</li>
-                                            <li>Issued By: {iE.issuedBy}</li>
-                                        </ul>
-                                    )) : <p>None listed</p>
-                                }
+                                <h3>Job Seeker Id: {item.jobSeekerId}</h3>
+
                             </div>
                         ))
                     }

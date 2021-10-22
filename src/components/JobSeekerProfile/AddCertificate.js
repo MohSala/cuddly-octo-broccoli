@@ -27,7 +27,7 @@ function AddCertificate(props) {
     const submitAction = (e) => {
         e.preventDefault();
         setLoading(true);
-        axios.post(`${BASE_URL}api/certificates/`, {
+        axios.post(`${BASE_URL}api/ca/certificates/`, {
             name,
             issuedBy,
             issueDate,

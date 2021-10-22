@@ -37,7 +37,7 @@ function AddVacancy(props) {
             postTo,
             salaryFrom,
             salaryTo)
-        axios.post(`${BASE_URL}api/vacancy`, {
+        axios.post(`${BASE_URL}api/js/vacancy`, {
             title: title,
             location,
             jobDescription: description,

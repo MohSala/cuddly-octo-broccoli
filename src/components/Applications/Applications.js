@@ -20,7 +20,7 @@ function Applications(props) {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`${BASE_URL}api/vacancy/`, { headers })
+        axios.get(`${BASE_URL}api/js/vacancy/`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(response.data)

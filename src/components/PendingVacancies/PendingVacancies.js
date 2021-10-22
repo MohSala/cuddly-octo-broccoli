@@ -18,7 +18,7 @@ function PendingVacancies() {
     }
 
     useEffect(() => {
-        axios.get(`${BASE_URL}api/vacancy/pending-approval/`, { headers })
+        axios.get(`${BASE_URL}api/js/vacancy/pending-approval/`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(response.data)
@@ -31,7 +31,7 @@ function PendingVacancies() {
 
     const changeStatus = (e,status,id) => {
         e.preventDefault();
-        axios.put(`${BASE_URL}api/vacancy/change-status/${id}`, {
+        axios.put(`${BASE_URL}api/js/vacancy/change-status/${id}`, {
             status:status
         },{ headers })
             .then((response) => {

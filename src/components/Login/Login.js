@@ -30,11 +30,43 @@ function Login(props) {
                 .then((response) => {
                     console.log("RESP>> ", response.data)
                     localStorage.setItem("token", response.data.accessToken);
-                    localStorage.setItem("user", JSON.stringify(response.data.user));
-                    setLoading(false);
+                    let userr = response.data.user;
+                    userr.role = userr.authorities[0].authority;
+                    localStorage.setItem("user", JSON.stringify(userr));
                     setError(false);
                     dispatch(login(response.data.user))
-                    props.history.push("/dashboard");
+                    if(userr.role == "ROLE_JOBSEEKER"){
+                        axios.post(`${BASE_URL}api/ca/job-seeker`, {
+                            "bio":"My Bio",
+                            "currentPosition":"Software Engineer"
+                        }, {
+                            "headers":{
+                                'Authorization': `Bearer ${response.data.accessToken}`,
+                                'Access-Control-Allow-Origin': '*',
+                            }
+                        }).then((response) => {
+                            localStorage.setItem("jobseeker", JSON.stringify(response.data));
+                            setLoading(false);
+                            props.history.push("/dashboard");
+                        });
+                    }else{
+                        axios.post(`${BASE_URL}api/js/company`, {
+                            "userId":userr.id,
+                            "street":"BroadWay",
+                            "city":"Fairfield",
+                            "state":"IA",
+                            "zipcode":"52556"
+                        }, {
+                            "headers":{
+                                'Authorization': `Bearer ${response.data.accessToken}`,
+                                'Access-Control-Allow-Origin': '*',
+                            }
+                        }).then((response) => {
+                            localStorage.setItem("company", JSON.stringify(response.data));
+                            setLoading(false);
+                            props.history.push("/dashboard");
+                        });
+                    }
                 })
                 .catch((e) => {
                     setError(true);

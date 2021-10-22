@@ -29,7 +29,7 @@ function Header(props) {
 
     useEffect(() => {
 
-        axios.get(`${BASE_URL}user/me`, { headers })
+        /*axios.get(`${BASE_URL}user/me`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data);
                 let u = localStorage.getItem("user");
@@ -40,9 +40,9 @@ function Header(props) {
             })
             .catch((e) => {
                 console.log("ERROR", e.message)
-            })
+            })*/
     }, [])
-
+    console.log(user);
     const logout = () => {
         localStorage.clear();
         window.location.replace('/login');

@@ -11,7 +11,7 @@ function Register(props) {
     const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
-    const [role, setRole] = useState("jobseeker");
+    const [role, setRole] = useState("ROLE_JOBSEEKER");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState("");
@@ -70,8 +70,8 @@ function Register(props) {
                 <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
 
                 <select onChange={e => setRole(e.target.value)}>
-                    <option value="jobseeker">Job Seeker</option>
-                    <option value="company">Company</option>
+                    <option value="ROLE_JOBSEEKER">Job Seeker</option>
+                    <option value="ROLE_COMPANY">Company</option>
                 </select>
 
                 <button onClick={registerTo}>{isLoading ? 'Loading...' : 'Submit'}</button>

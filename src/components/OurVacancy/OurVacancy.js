@@ -19,7 +19,7 @@ function OurVacancy(props) {
     }
 
     useEffect(() => {
-        axios.get(`${BASE_URL}api/vacancy/`, { headers })
+        axios.get(`${BASE_URL}api/js/vacancy/`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(response.data)
@@ -32,7 +32,7 @@ function OurVacancy(props) {
 
     const deletePosting = (e, id) => {
         e.preventDefault();
-        axios.delete(`${BASE_URL}api/vacancy/${id}`, { headers })
+        axios.delete(`${BASE_URL}api/js/vacancy/${id}`, { headers })
             .then((response) => {
                 console.log("RESP>> ", response.data)
                 setData(data.filter(d => d.id !== id))
